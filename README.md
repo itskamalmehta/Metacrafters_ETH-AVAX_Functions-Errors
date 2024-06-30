@@ -10,23 +10,25 @@ This repository contains a Solidity smart contract that demonstrates the usage o
 
 ### Installing
 
-To interact with the smart contract, you can use Remix, an online Solidity IDE. Follow these steps:
+To Run this Smart Contract use Online Remix IDE.
+Follow these steps:
 
-1. Go to the Remix website.
+1. Go to the Remix website, https://remix.ethereum.org/ .
 
-2. Create a new file and save it with a .sol extension (e.g., FunctionsAndErrors.sol).
+2. Create New file and Save it with a .sol extension with any name before it.
 
-3. Copy and paste the provided Solidity code into the file.
+3. Copy-paste the provided Solidity code into the file created by you.
 
-4. Click on the "Solidity Compiler" tab and set the compiler version to 0.8.18 (or another compatible version). Click on "Compile FunctionsAndErrors.sol" to compile the code.
+4. Click on the "Solidity Compiler" tab and set the compiler version to 0.8.18 (or another compatible version) then Click on "Compile" to compile.
 
-5. Deploy the contract by clicking on the "Deploy & Run Transactions" tab. Select the "FunctionsAndErrors" contract from the dropdown menu and click "Deploy."
+5. Deploy the contract by clicking on the "Deploy & Run Transactions" tab then and choose Environment "Remix VM (Paris)", click "Deploy."
 
 6. Once the contract is deployed, you can interact with it using the provided functions:
-
-   (a) Use the deposit function to deposit funds into the contract.
-   (b) Use the withdraw function to withdraw a specified amount from the contract.
-   (c) Use the checkBalance function to view the contract's current balance.
+    
+   (a) Copy address from either clicking on "copy address" from Account option or click on owner and copy address.  
+   (a) Use the mint and burn function to mint and burn token.
+   (b) Use the Name_Coin function to view the name of coin.
+   (c) Use the Balance function to view the current balance.
 
 ### Program Code:
 
@@ -37,7 +39,7 @@ pragma solidity 0.8.18;
 contract ABCoin {
     string public name = "ABCoin"; // The name of the coin
     address public owner; // The owner of the contract
-    mapping(address => uint) public balances; // Mapping to store balances of addresses
+    mapping(address => uint) public balance; // Mapping to store balance of addresses
 
     // Constructor: Initializes the contract with the deployer as the owner
     constructor() {
@@ -54,16 +56,16 @@ contract ABCoin {
     function mint(address recipient, uint amount) public onlyOwner {
         require(amount > 0, "Amount to mint must be greater than 0");
 
-        balances[recipient] += amount; // Increase recipient's balance
-        assert(balances[recipient] >= amount); // Ensure no underflow
+        balance[recipient] += amount; // Increase recipient's balance
+        assert(balance[recipient] >= amount); // Ensure no underflow
     }
 
     // Function: Allows the owner to burn coins from an address
     function burn(address target, uint amount) public onlyOwner {
-        require(balances[target] >= amount, "Insufficient balance to burn");
+        require(balance[target] >= amount, "Insufficient balance to burn");
 
-        balances[target] -= amount; // Decrease target's balance
-        assert(balances[target] >= 0); // Ensure no underflow
+        balance[target] -= amount; // Decrease target's balance
+        assert(balance[target] >= 0); // Ensure no underflow
     }
 }
 ```
