@@ -33,7 +33,7 @@ contract APECoin {
         assert(balance[target] >= 0); // Ensure no underflow
     }
 
-    // Revert function added to handle insufficient balance in burn function
+    // Revert function to handle insufficient balance in burn function
     function revertIfInsufficientBalance(address _address, uint _value) internal view {
         require(balance[_address] >= _value, "Not enough balance to burn");
     }
