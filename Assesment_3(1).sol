@@ -2,7 +2,7 @@
 pragma solidity 0.8.18;
 
 contract APECoin {
-    string public name = "ABCoin"; // The name of the coin
+    string public name = "APECoin"; // The name of the coin
     address public owner; // The owner of the contract
     mapping(address => uint) public balance; // Mapping to store balance of addresses
 
