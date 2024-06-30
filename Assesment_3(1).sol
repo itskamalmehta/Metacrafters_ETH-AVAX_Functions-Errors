@@ -31,14 +31,10 @@ contract APECoin {
 
         balance[target] -= amount; // Decrease target's balance
         assert(balance[target] <= type(uint).max); // Ensure no overflow
-
-        if (balance[target] == 0) {
-            delete balance[target];
-        }
     }
 
     // Fallback function to revert
     fallback() external {
-        revert("Fallback function called");
+        revert("Fallback function called. Ether not accepted.");
     }
 }
