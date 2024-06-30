@@ -66,10 +66,6 @@ contract APECoin {
 
         balance[target] -= amount; // Decrease target's balance
         assert(balance[target] <= type(uint).max); // Ensure no overflow
-
-        if (balance[target] == 0) {
-            delete balance[target];
-        }
     }
 
     // Fallback function to revert
