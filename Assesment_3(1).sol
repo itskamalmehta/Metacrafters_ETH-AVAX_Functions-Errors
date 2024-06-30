@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.18;
 
-contract ABCoin {
-    string public name = "ABCoin"; // The name of the coin
+contract APECoin {
+    string public Coin_Name = "APECoin"; // The name of the coin
     address public owner; // The owner of the contract
     mapping(address => uint) public balances; // Mapping to store balances of addresses
 
@@ -26,10 +26,10 @@ contract ABCoin {
     }
 
     // Function: Allows the owner to burn coins from an address
-    function burn(address target, uint amount) public onlyOwner {
-        require(balances[target] >= amount, "Insufficient balance to burn");
+    function burn(address _address, uint amount) public onlyOwner {
+        require(balances[_address] >= amount, "Insufficient balance to burn");
 
-        balances[target] -= amount; // Decrease target's balance
-        assert(balances[target] >= 0); // Ensure no underflow
+        balances[_address] -= amount; // Decrease _address's balance
+        assert(balances[_address] >= 0); // Ensure no underflow
     }
 }
