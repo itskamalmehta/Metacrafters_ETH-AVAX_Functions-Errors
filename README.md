@@ -65,12 +65,16 @@ contract APECoin {
         require(balance[target] >= amount, "Insufficient balance to burn");
 
         balance[target] -= amount; // Decrease target's balance
-        assert(balance[target] >= 0); // Ensure no underflow
+        assert(balance[target] <= type(uint).max); // Ensure no overflow
+
+        if (balance[target] == 0) {
+            delete balance[target];
+        }
     }
 
-    // Revert function to handle insufficient balance in burn function
-    function revertIfInsufficientBalance(address _address, uint _value) internal view {
-        require(balance[_address] >= _value, "Not enough balance to burn");
+    // Fallback function to revert
+    fallback() external {
+        revert("Fallback function called. Ether not accepted.");
     }
 }
 
@@ -80,6 +84,7 @@ contract APECoin {
 ## Authors
 
 Kamal Mehta
+
 itskamalmehta@gmail.com
 
 
