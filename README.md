@@ -36,8 +36,8 @@ Follow these steps:
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.18;
 
-contract ABCoin {
-    string public name = "ABCoin"; // The name of the coin
+contract APECoin {
+    string public name = "APECoin"; // The name of the coin
     address public owner; // The owner of the contract
     mapping(address => uint) public balance; // Mapping to store balance of addresses
 
