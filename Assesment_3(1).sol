@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.18;
 
-contract Holocoin {
+contract ABCoin {
     string public name = "ABCoin"; // The name of the coin
     address public owner; // The owner of the contract
     mapping(address => uint) public balances; // Mapping to store balances of addresses
