@@ -70,7 +70,7 @@ contract APECoin {
 
     // Fallback function to revert
     fallback() external {
-        revert("Fallback function called. Ether not accepted.");
+        revert("Fallback function");
     }
 }
 
